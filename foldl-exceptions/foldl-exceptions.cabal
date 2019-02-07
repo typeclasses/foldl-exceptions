@@ -3,7 +3,7 @@ cabal-version: 2.0
 name: foldl-exceptions
 version: 1.0.0.0
 
-synopsis: Types for the Leanpub API
+synopsis: Exception handling with FoldM
 category: Web
 
 description:
