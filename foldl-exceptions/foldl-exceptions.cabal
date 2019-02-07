@@ -4,7 +4,7 @@ name: foldl-exceptions
 version: 1.0.0.0
 
 synopsis: Exception handling with FoldM
-category: Web
+category: Control
 
 description:
     Adds support for tuning exception handling behavior when
