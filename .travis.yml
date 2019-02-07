@@ -95,7 +95,7 @@ install:
 script:
   # test that source-distributions can be generated
   - (cd "foldl-exceptions" && cabal sdist)
-  - mv "foldl-exceptions"/dist/foldl-exceptions-*.tar.gz ${DISTDIR}/
+  - mv dist-newstyle/sdist/*.tar.gz ${DISTDIR}/
   - cd ${DISTDIR} || false
   - find . -maxdepth 1 -name '*.tar.gz' -exec tar -xvf '{}' \;
   - "printf 'packages: foldl-exceptions-*/*.cabal\\n' > cabal.project"
