@@ -21,7 +21,6 @@ license: MIT
 license-file: license.txt
 
 build-type: Simple
-tested-with: GHC==8.6.1
 
 library
     hs-source-dirs: library
