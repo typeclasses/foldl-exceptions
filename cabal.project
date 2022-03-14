@@ -1,3 +1,1 @@
-packages:
-    foldl-exceptions/foldl-exceptions.cabal
-
+packages: foldl-exceptions
