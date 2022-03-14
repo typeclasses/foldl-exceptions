@@ -1,7 +1,7 @@
 cabal-version: 3.0
 
 name: foldl-exceptions
-version: 1.0.0.0
+version: 1.0.0.1
 
 synopsis: Exception handling with FoldM
 category: Control
