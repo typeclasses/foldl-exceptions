@@ -1,0 +1,6 @@
+cradle:
+  cabal:
+    - path: "./foldl-exceptions/library"
+      component: "lib:foldl-exceptions"
+    - path: "./foldl-exceptions/test-suite/test-foldl-exceptions"
+      component: "test:test-foldl-exceptions"
