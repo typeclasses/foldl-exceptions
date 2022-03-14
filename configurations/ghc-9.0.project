@@ -1,0 +1,4 @@
+packages: foldl-exceptions
+
+constraints:
+    base == 4.15.*

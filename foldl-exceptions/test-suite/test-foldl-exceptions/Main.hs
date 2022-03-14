@@ -27,12 +27,14 @@ prop_1 = withTests 1 $ property $ do
 
     -- Since (f 500) produces an exception, the following fold fails:
     let fold1 = L.premapM f (L.generalize L.list)
-    liftIO (try (L.foldM fold1 xs)) >>= (=== Left Overflow)
+    r1 :: Either ArithException [Integer] <- liftIO $ try $ L.foldM fold1 xs
+    r1 === Left Overflow
 
     -- By applying 'untilFirstException', we can produce a new fold that returns
     -- the intermediate result at the point where the exception occurs.
     let fold2 = exHalt_ fold1
-    liftIO (L.foldM fold2 xs) >>= (=== [1, 2])
+    r2 :: [Integer] <- liftIO $ L.foldM fold2 xs
+    r2 === [1, 2]
 
 prop_2 :: Property
 prop_2 = withTests 1 $ property $ do
@@ -42,7 +44,8 @@ prop_2 = withTests 1 $ property $ do
     let fold1 = L.premapM f (L.generalize L.list)
     let fold2 = exHalt @ArithException fold1
 
-    liftIO (L.foldM fold2 xs) >>= (=== (Just Overflow, [1, 2]))
+    r :: (Maybe ArithException, [Integer]) <- liftIO $ L.foldM fold2 xs
+    r === (Just Overflow, [1, 2])
 
 prop_3 :: Property
 prop_3 = withTests 1 $ property $ do
@@ -51,13 +54,15 @@ prop_3 = withTests 1 $ property $ do
 
     -- Since (f 500) produces an exception, the following fold fails:
     let fold1 = L.premapM f (L.generalize L.list)
-    liftIO (try (L.foldM fold1 xs)) >>= (=== Left Overflow)
+    r1 :: Either ArithException [Integer] <- liftIO $ try $ L.foldM fold1 xs
+    r1 === Left Overflow
 
     -- By applying 'exSkip_', we can produce a new fold that produces
     -- a result from all steps that /don't/ fail:
 
     let fold2 = exSkip_ fold1
-    liftIO (L.foldM fold2 xs) >>= (=== [1, 2, 4])
+    r2 :: [Integer] <- liftIO $ L.foldM fold2 xs
+    r2 === [1, 2, 4]
 
 prop_4 :: Property
 prop_4 = withTests 1 $ property $ do
@@ -66,10 +71,12 @@ prop_4 = withTests 1 $ property $ do
 
     -- Since (f 500) produces an exception, the following fold fails:
     let fold1 = L.premapM f (L.generalize L.list)
-    liftIO (try (L.foldM fold1 xs)) >>= (=== Left Overflow)
+    r1 :: Either ArithException [Integer] <- liftIO $ try $ L.foldM fold1 xs
+    r1 === Left Overflow
 
     -- By applying 'exSkip', we can produce a new fold that produces
     -- a result from all steps that /don't/ fail:
 
     let fold2 = exSkip @ArithException fold1
-    liftIO (L.foldM fold2 xs) >>= (=== ([Overflow], [1, 2, 4]))
+    r2 :: ([ArithException], [Integer]) <- liftIO $ L.foldM fold2 xs
+    r2 === ([Overflow], [1, 2, 4])

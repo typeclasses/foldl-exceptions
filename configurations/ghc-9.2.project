@@ -1,0 +1,6 @@
+packages: foldl-exceptions
+
+constraints:
+    base == 4.16.*
+  , foldl == 1.4.12
+  , safe-exceptions == 0.1.7.2

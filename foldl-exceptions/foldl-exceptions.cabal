@@ -27,9 +27,9 @@ common base
     default-extensions: ScopedTypeVariables, TypeApplications
     ghc-options: -Wall
     build-depends:
-        base >=4.10 && <5
-      , foldl
-      , safe-exceptions
+        base >=4.10 || ^>= 4.11 || ^>= 4.12 || ^>= 4.13 || ^>= 4.14 || ^>= 4.15 || ^>= 4.16
+      , foldl ^>= 1.4
+      , safe-exceptions ^>= 0.1.5
 
 library
     import: base
@@ -44,4 +44,4 @@ test-suite test-foldl-exceptions
     main-is: Main.hs
     build-depends:
         foldl-exceptions
-      , hedgehog
+      , hedgehog ^>= 0.6 || ^>= 1.0 || ^>= 1.1

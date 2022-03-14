@@ -1,0 +1,5 @@
+packages: foldl-exceptions
+
+constraints:
+    base == 4.14.*
+  , hedgehog == 1.1
