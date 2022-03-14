@@ -1,8 +1,3 @@
-{-# OPTIONS_GHC -Wall #-}
-
-{-# LANGUAGE ScopedTypeVariables #-}
-{-# LANGUAGE TypeApplications    #-}
-
 {- |
 
 When 'IO' is the monad of a monadic fold, each step in the evaluation of the

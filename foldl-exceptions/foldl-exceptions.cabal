@@ -1,4 +1,4 @@
-cabal-version: 2.0
+cabal-version: 3.0
 
 name: foldl-exceptions
 version: 1.0.0.0
@@ -22,21 +22,26 @@ license-file: license.txt
 
 build-type: Simple
 
-library
-    hs-source-dirs: library
+common base
     default-language: Haskell2010
-
-    exposed-modules:
-        Control.Foldl.Exceptions
-
+    default-extensions: ScopedTypeVariables, TypeApplications
+    ghc-options: -Wall
     build-depends:
         base >=4.10 && <5
       , foldl
       , safe-exceptions
 
-test-suite doctest
+library
+    import: base
+    hs-source-dirs: library
+    exposed-modules: Control.Foldl.Exceptions
+
+test-suite test-foldl-exceptions
+    import: base
     type: exitcode-stdio-1.0
-    hs-source-dirs: test
+    hs-source-dirs: test-suite/test-foldl-exceptions
     default-language: Haskell2010
-    main-is: doctest.hs
-    build-depends: base, doctest
+    main-is: Main.hs
+    build-depends:
+        foldl-exceptions
+      , hedgehog
