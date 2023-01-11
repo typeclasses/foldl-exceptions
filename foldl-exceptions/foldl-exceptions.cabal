@@ -22,6 +22,8 @@ license-file: license.txt
 
 build-type: Simple
 
+extra-source-files: *.md
+
 common base
     default-language: Haskell2010
     default-extensions: ScopedTypeVariables, TypeApplications
