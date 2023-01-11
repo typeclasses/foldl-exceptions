@@ -20,8 +20,6 @@ copyright: 2019 Mission Valley Software LLC
 license: MIT
 license-file: license.txt
 
-build-type: Simple
-
 extra-source-files: *.md
 
 common base
